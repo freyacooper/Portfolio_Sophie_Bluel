@@ -46,12 +46,17 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+a:visited {
+	text-decoration: none;
+	color: black;
+}
 /** end reset css**/
 body {
 	max-width: 1140px;
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
+	background-color: #FFFEF8;
 }
 header {
 	display: flex;
@@ -62,7 +67,7 @@ section {
 	margin: 50px 0
 }
 
-h1{
+h1 a {
 	display: flex;
 	flex-direction: column;
 	font-family: 'Syne';
@@ -71,7 +76,7 @@ h1{
 	color: #B1663C
 }
 
-h1 > span {
+h1 span {
 	font-family: 'Work Sans';
 	font-size:10px;
 	letter-spacing: 0.1em;
@@ -94,10 +99,19 @@ nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
 }
+li img {
+	height: 25px;
+}
+a {
+	text-decoration: none;
+	color: black;
+	transition: color 300ms;
+}
 
-li:hover {
+nav a:hover, li:hover {
 	color: #B1663C;
 }
+
 #introduction {
 	display: flex;
 	align-items: center;
@@ -125,6 +139,38 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
+
+.filters {
+	display: flex;
+	flex-direction: row;
+	margin: 50px 0;
+	align-items: center;
+	justify-content: center;
+}
+
+.filter {
+	font-family: 'Syne';
+	font-weight: 700;
+	color: #1D6154;
+	border: solid 1px #1D6154;
+	margin : 0px 5px ;
+	padding: 10px 20px;
+	text-align: center;
+	border-radius: 60px ;
+	transition: filter 400ms;
+	background-color: #FFFEF8;
+	cursor: pointer;
+}
+
+.filter-active {
+	background-color: #1D6154;
+	color: white;
+}
+
+.filter:hover {
+	filter: brightness(0.9);
+}
+
 .gallery {
 	width: 100%;
 	display: grid;
@@ -178,6 +224,11 @@ input[type="submit"]{
 	width: 180px;
 	text-align: center;
 	border-radius: 60px ;
+	transition: background-color 500ms;
+}
+
+input[type="submit"]:hover {
+	background-color: #0E2F28;
 }
 
 footer nav ul {
@@ -186,3 +237,37 @@ footer nav ul {
 	margin: 2em
 }
 
+#login {
+	width: 40%;
+	margin: 130px auto;
+	text-align: center;
+}
+
+#login form {
+	text-align: left;
+	margin-top: 20px;
+	display: flex;
+	flex-direction: column;
+}
+
+#login input {
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+#login label {
+	margin: 2em 0 1em 0;
+}
+
+#login input[type="submit"] {
+	padding: 0 60px;
+	width: fit-content;
+	margin : 3em auto 2.5em auto ;
+}
+
+.mdp-oublie {
+	text-decoration: underline;
+	font-size: 14px;
+	cursor: pointer;
+}
