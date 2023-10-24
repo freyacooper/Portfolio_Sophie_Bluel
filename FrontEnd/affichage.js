@@ -1,19 +1,43 @@
 
-export function afficherElements(list) {
-    for(let i = 0; i < list.length; i++) {
-        const projet = list[i]
-        const divGallery = document.querySelector(".gallery")
-        const figure = document.createElement("figure")
+const sectionPortfolio = document.getElementById("portfolio")
+const divGallery = document.querySelector(".gallery")
 
-        const img = document.createElement("img")
-        img.src = projet.imageUrl
+const divFilters = document.createElement("div")
+divFilters.classList.add("filters")
 
-        const caption = document.createElement("figcaption")
-        caption.innerText = projet.title
+const filterTous = document.createElement("a")
+filterTous.classList.add("filter-active", "filter")
+filterTous.innerText = "Tous"
+divFilters.appendChild(filterTous)
 
-        figure.appendChild(img)
-        figure.appendChild(caption)
+fetch("http://localhost:5678/api/categories").then(res => {
+    return res.json()
+})
+.then(data => { const categories = data
+    categories.forEach(category => {
+        const filterElement = document.createElement("a")
+        filterElement.innerText = category.name
+        filterElement.classList.add("filter")
+        filterElement.setAttribute("data-id", `${category.id}`)
 
-        divGallery.appendChild(figure)
-    }
-}
+        divFilters.appendChild(filterElement)
+        sectionPortfolio.insertBefore(divFilters, divGallery)
+    })
+
+    const filtersElements = document.querySelectorAll(".filters a")
+    filtersElements.forEach(filterElement => {
+        filterElement.addEventListener("click", (event) => {
+            document.querySelector(".filter-active")?.classList.remove("filter-active")
+            filterElement.classList.add("filter-active")
+                
+            const works = document.querySelectorAll("figure")
+            works.forEach(work => {
+                work.style.display = "block"
+                if(event.target.hasAttribute("data-id") && work.dataset.id !== event.target.dataset.id) {
+                    work.style.display = "none"
+                }
+            })
+            
+        })
+    })
+})
