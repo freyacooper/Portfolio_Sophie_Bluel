@@ -57,6 +57,19 @@ body {
 	font-family: 'Work Sans' ;
 	font-size: 14px;
 	background-color: #FFFEF8;
+	display: flex;
+	flex-direction: column;
+}
+.barre-edition{
+	background-color: black;
+	color: white;
+	text-align: center;
+	padding: 20px;
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: center;
+	gap: 10px;
+	
 }
 header {
 	display: flex;
@@ -138,6 +151,23 @@ nav a:hover, li:hover {
 #portfolio h2 {
 	text-align: center;
 	margin-bottom: 1em;
+}
+
+.modifier {
+	display: flex;
+	flex-direction: row-reverse;
+	gap: 10px;
+	margin-bottom: 30px;
+	position: absolute;
+	right: 30%;
+}
+
+.titre{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	position: relative;
 }
 
 .filters {
@@ -270,4 +300,46 @@ footer nav ul {
 	text-decoration: underline;
 	font-size: 14px;
 	cursor: pointer;
+}
+
+.erreur {
+	color: #CA4202;
+	background-color: #FFEFE8;
+	margin: 30px 0 0 0;
+	padding: 10px 0;
+}
+
+/* Modal css */
+
+.modal {
+	background-color: rgba(0,0,0,0.3);
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	position: fixed;
+	display: none;
+}
+
+.modal-box {
+	background-color: white;
+	width: 45%;
+	height: 70%;
+	margin: 10% auto;
+	display: flex;
+	flex-direction: column;
+	border-radius: 10px;
+	padding: 30px;
+}
+
+.modal-header {
+	display: flex;
+	justify-content: end;
+	align-items: center;
+	height: 30px;
+	margin: 0 10px;
+}
+
+.modal-box h3 {
+	margin: 10px auto 50px auto;
+	font-size: 26px;
 }

@@ -1,4 +1,3 @@
-
 const sectionPortfolio = document.getElementById("portfolio")
 const divGallery = document.querySelector(".gallery")
 
@@ -30,7 +29,7 @@ fetch("http://localhost:5678/api/categories").then(res => {
             document.querySelector(".filter-active")?.classList.remove("filter-active")
             filterElement.classList.add("filter-active")
                 
-            const works = document.querySelectorAll("figure")
+            const works = document.querySelectorAll("#portfolio figure")
             works.forEach(work => {
                 work.style.display = "block"
                 if(event.target.hasAttribute("data-id") && work.dataset.id !== event.target.dataset.id) {
@@ -41,3 +40,41 @@ fetch("http://localhost:5678/api/categories").then(res => {
         })
     })
 })
+
+const loginButton = document.querySelector(".login-button")
+const header = document.querySelector("header")
+const body = document.querySelector("body")
+
+const tokenValue = localStorage.getItem("token")
+if(tokenValue) {
+    loginButton.innerText = "logout"
+    loginButton.addEventListener("click", () => {
+        localStorage.clear()
+        location.reload()
+    })
+    divFilters.style.display = "none"
+
+    const barreEdition = document.createElement("div")
+    const editionText = document.createElement("p")
+    editionText.innerText = "Mode édition"
+    const iconEdition = document.createElement("i")
+    iconEdition.classList.add("fa-regular", "fa-pen-to-square")
+    barreEdition.classList.add("barre-edition")
+    barreEdition.appendChild(editionText)
+    barreEdition.appendChild(iconEdition)
+    body.insertBefore(barreEdition, header)
+
+    const boutonModifier = document.createElement("a")
+    boutonModifier.innerText = "modifier"
+    const iconModifier = document.createElement("i")
+    iconModifier.classList.add("fa-regular", "fa-pen-to-square")
+    boutonModifier.appendChild(iconModifier)
+    boutonModifier.classList.add("modifier")
+
+    const divTitre = document.createElement("div")
+    divTitre.classList.add("titre")
+    const TitreMesProjets = document.querySelector("#portfolio h2")
+    divTitre.appendChild(TitreMesProjets)
+    divTitre.appendChild(boutonModifier)
+    sectionPortfolio.insertBefore(divTitre, divGallery)
+}
