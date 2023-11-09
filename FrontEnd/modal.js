@@ -13,7 +13,7 @@ function afficherGallery(list) {
         img.src = projet.imageUrl
         
         const iconPoubelle = document.createElement("i")
-        iconPoubelle.classList.add("fa-solid", "fa-trash-can", "fa-lg")
+        iconPoubelle.classList.add("fa-solid", "fa-trash-can", "clickable")
         iconPoubelle.setAttribute("data-id", `${projet.id}`)
 
         divImage.appendChild(img)
@@ -31,7 +31,7 @@ modalBox.classList.add("modal-box")
 const modalHeader = document.createElement("div")
 modalHeader.classList.add("modal-header")
 const cross = document.createElement("i")
-cross.classList.add("fa-solid", "fa-xmark", "fa-xl")
+cross.classList.add("fa-solid", "fa-xmark", "fa-xl", "clickable")
 modalHeader.appendChild(cross)
 
 const modalTitre = document.createElement("h3")
@@ -42,6 +42,7 @@ divLine.classList.add("line")
 
 const boutonAjouter = document.createElement("a")
 boutonAjouter.innerText = "Ajouter une photo"
+boutonAjouter.classList.add("modal-button", "clickable")
 
 fetch("http://localhost:5678/api/works").then(res => {
     return res.json()
@@ -76,7 +77,7 @@ boutonModifier.addEventListener("click", () =>{
                 headers: { "Authorization" : `Bearer ${token}` },
             })
             .then(res => {
-                if(res.status === 200) {
+                if(res.status === 204) {
                     imgSupprime.style.display = "none"
                 }
             })

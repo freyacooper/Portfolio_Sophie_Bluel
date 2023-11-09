@@ -42,6 +42,7 @@ fetch("http://localhost:5678/api/categories").then(res => {
 })
 
 const loginButton = document.querySelector(".login-button")
+loginButton.classList.add("clickable")
 const header = document.querySelector("header")
 const body = document.querySelector("body")
 
@@ -69,7 +70,7 @@ if(tokenValue) {
     const iconModifier = document.createElement("i")
     iconModifier.classList.add("fa-regular", "fa-pen-to-square")
     boutonModifier.appendChild(iconModifier)
-    boutonModifier.classList.add("modifier")
+    boutonModifier.classList.add("modifier", "clickable")
 
     const divTitre = document.createElement("div")
     divTitre.classList.add("titre")

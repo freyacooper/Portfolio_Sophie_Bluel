@@ -320,10 +320,11 @@ footer nav ul {
 
 .modal-box {
 	background-color: white;
-	width: 45%;
-	height: 75%;
-	margin:  7% auto;
+	width: 40%;
+	height: 80%;
+	margin:  4% auto;
 	display: flex;
+	justify-content: space-between;
 	flex-direction: column;
 	border-radius: 10px;
 	padding: 30px;
@@ -339,7 +340,7 @@ footer nav ul {
 }
 
 .modal-box h3 {
-	margin: 10px auto 50px auto;
+	margin: 10px auto 40px auto;
 	font-size: 26px;
 }
 
@@ -347,7 +348,7 @@ footer nav ul {
 	width: 80%;
 	height: 1px;
 	background-color: #B3B3B3;
-	margin: 1em auto;
+	margin: auto;
 	border-radius: 10px;
 }
 
@@ -366,7 +367,7 @@ footer nav ul {
 	position: relative;
 }
 
-.modal-box a {
+.modal-button {
 	font-family: 'Syne';
 	font-weight: 400;
 	color: white;
@@ -378,6 +379,9 @@ footer nav ul {
 	transition: background-color 500ms;
 	padding: 15px 40px;
 }
+.modal-button:hover {
+	background-color: #0E2F28;
+}
 
 .div-image i {
 	position: absolute;
@@ -388,9 +392,10 @@ footer nav ul {
 	margin: 8px;
 	border-radius: 4px;
 	color: white;
-	width: 15px;
-	height: 15px;
+	width: 7px;
+	height: 7px;
 	display: flex;
+	justify-content: center;
 	align-items: center;
 }
 
@@ -420,8 +425,8 @@ footer nav ul {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	padding: 20px;
-	margin-bottom: 20px;
+	height: 206px;
+	
 }
 
 .div-photo a {
@@ -430,9 +435,26 @@ footer nav ul {
 	color: #306685;
 	background-color: #CBD6DC;
 	margin: 10px;
+	border-radius: 60px ;
+	transition: background-color 500ms;
+	padding: 15px 40px;
 }
 
 .div-photo i {
 	color: #B9C5CC;
-	
+	padding-top: 20px;
+}
+.div-photo p {
+	padding-bottom: 20px;
+}
+
+.preview {
+	height: 100%;
+}
+.clickable {
+	cursor: pointer;
+}
+.disabled {
+	background-color: #A7A7A7;
+	pointer-events: none;
 }
