@@ -145,20 +145,47 @@ form.addEventListener("change", () => {
 
 boutonValider.addEventListener("click", () => {
     const token = localStorage.getItem("token")
-    const formInputValues = {
-        title: titre.value,
-        imageUrl: photoUpload.files[0],
-        categoryId: cat.selectedOptions[0].getAttribute("data-id"),
-    }
-    const formBodyValue = JSON.stringify(formInputValues)
-    console.log(formInputValues)
+   
+    let data = new FormData()
+    data.append("image", photoUpload.files[0])
+    data.append("title", titre.value)
+    data.append("category", parseInt(cat.selectedOptions[0].getAttribute("data-id")))
+    
+    console.log(data)
 
     fetch("http://localhost:5678/api/works", {
                 method: "POST",
                 headers: { "Authorization" : `Bearer ${token}` },
-                body: formBodyValue,
+                body: data,
             })
             .then(res => {
-                console.log(res)
+                if(res.status === 201) {
+                    const divImage = document.createElement("div")
+                    divImage.classList.add("div-image")
+
+                    const img = document.createElement("img")
+                    img.src = window.URL.createObjectURL(photoUpload.files[0])
+                    
+                    const iconPoubelle = document.createElement("i")
+                    iconPoubelle.classList.add("fa-solid", "fa-trash-can", "clickable")
+
+                    divImage.appendChild(img)
+                    divGalleryMod.appendChild(divImage)
+                    divImage.appendChild(iconPoubelle)
+
+                    const figure = document.createElement("figure")
+                    const imgGallery = document.createElement("img")
+                    imgGallery.src = window.URL.createObjectURL(photoUpload.files[0])
+                    const caption = document.createElement("figcaption")
+                    caption.innerText = titre.value
+
+                    figure.appendChild(imgGallery)
+                    figure.appendChild(caption)
+
+                    divGallery.appendChild(figure)
+
+                    modalFormulaire.style.display = "none"
+                    modal.style.display = "block"
+                }
             })
 })

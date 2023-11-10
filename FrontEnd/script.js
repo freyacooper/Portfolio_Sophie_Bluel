@@ -25,6 +25,7 @@ function afficherElements(list) {
         caption.innerText = projet.title
 
         figure.setAttribute("data-id", `${projet.categoryId}`)
+        figure.setAttribute("data-projetid", `${projet.id}`)
 
         figure.appendChild(img)
         figure.appendChild(caption)

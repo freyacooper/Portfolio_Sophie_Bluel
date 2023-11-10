@@ -79,6 +79,8 @@ boutonModifier.addEventListener("click", () =>{
             .then(res => {
                 if(res.status === 204) {
                     imgSupprime.style.display = "none"
+                    let imgSupprimeGallery = document.querySelector(`figure[data-projetid="${imgSupprime.dataset.id}"]`)
+                    imgSupprimeGallery.style.display = "none"
                 }
             })
         })
